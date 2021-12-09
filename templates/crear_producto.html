@@ -1,0 +1,14 @@
+{% extends 'base.html' %} 
+     
+{% block titulo %}
+        <title>Crear productos</title>
+{% endblock %}
+
+
+{% block content %}
+    <form action="" method="post" enctype="multipart/form-data"><!--enctype="multipart/form-data seive  para la imagenes --> 
+        {% csrf_token  %}
+        {{ form.as_p }}
+        <button type="submit">Crear</button>
+    </form>
+{% endblock %}

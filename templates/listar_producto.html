@@ -1,0 +1,41 @@
+{% extends 'base.html' %} 
+{% block titulo %}
+        <title>Listar productos</title>
+{% endblock %}
+{% block content %}
+
+   <table border="2">
+       <thead>
+        <tr>
+            <td>id</td>
+            <td>product_name,</td>
+            <td>'slug',</td>
+            <td>'description',</td>
+            <td>'price',</td>
+            <td>'images',</td>
+            <td>'stock',</td>
+            <td> 'is_available',</td>
+            <td>'category',</td>
+            <td><a class="btn btn-primary float-right" href="{% url 'crear_producto' %}" >Crear Produto</a></td>
+        </tr>
+       </thead>
+       <tbody>
+        {% for producto in object_list %}
+            <tr>
+            <td>{{ producto.id }}</td>
+            <td>{{ producto.product_name }}</td>
+            <td>{{ producto.slug }}</td>
+            <td>{{ producto.description }}</td>
+            <td>{{ producto.price }}</td>
+            <td><img src="{{ producto.images.url }}" width="200px" height="200px"/></td>
+            <td>{{ producto.stock }}</td>
+            <td>{{ producto.is_available }}</td>
+            <td>{{ producto.category }}</td>
+            <td><a class="btn btn-secondary" href="{% url 'editar_producto' producto.id %}" >Editar</a>
+                <a class="btn btn-danger" href="{% url 'eliminar_producto' producto.id %}" >Eliminar</a>
+            </td>
+            </tr>
+        {% endfor %}    
+       </tbody>
+   </table>
+{% endblock %}
